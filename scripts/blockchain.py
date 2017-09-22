@@ -1,5 +1,5 @@
 """
-this is a blockchain in python as designed by Gerald Nash
+this is a blockchain in python (initially designed by Gerald Nash)
 https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b
 """
 
@@ -25,12 +25,12 @@ class Block:
 def create_genesis_block():
     # Manually construct a block with
     # index zero and arbitrary previous hash
-    return Block(0, date.datetime.now(), "Genesis Block", "0")
+    return Block(0, date.datetime.utcnow(), "Genesis Block", "0")
 
 
 def next_block(last_block):
     this_index = last_block.index + 1
-    this_timestamp = date.datetime.now()
+    this_timestamp = date.datetime.utcnow()
     this_data = "Hey! I'm block " + str(this_index)
     this_hash = last_block.hash
     return Block(this_index, this_timestamp, this_data, this_hash)
